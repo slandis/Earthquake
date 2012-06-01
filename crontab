@@ -1,1 +1,7 @@
-5,20,35,50	*	*	* 	*	/usr/bin/php /Users/slandis/Documents/Earthquake/scrape.php
+# Earthquake/crontab
+# Copyright (C) 2012 Shaun Landis
+#
+# Please edit this to match your setup.
+# We want to run every fifteen minutes and snag, parse and insert
+# the weekly USGS data into our database.
+5,20,35,50	*	*	* 	*	cd ~/Earthquake; /usr/bin/php scrape.php

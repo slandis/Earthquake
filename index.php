@@ -13,7 +13,7 @@ $result = null;
 $row = null;
 $divs = "";
   
-$query = $db->query("SELECT * FROM datum ORDER BY timestamp DESC LIMIT 50");
+$query = $database->query("SELECT * FROM datum ORDER BY timestamp DESC LIMIT 50");
 $result = $query->fetchAll(PDO::FETCH_OBJ);
 
 foreach ($result as $row) {
