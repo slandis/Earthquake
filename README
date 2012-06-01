@@ -1,0 +1,21 @@
+# Earthquake/README
+# Copyright (C) 2012 Shaun Landis
+
+These scripts represent a small utility to use the earthquake data feed provided by the USGS
+and parse, store and finally visualize the data via a graph. Follow the directions below, and
+modify and extend to suit your needs. If you improve upon this application and would like to
+share the modifications, email me and I'll merge the changes.
+
+SETUP
+1 - Create the SQLite (version 3) database using the provided schema.sql file (ex: cat schema.sql | sqlite3 usgs.db)
+2 - Edit the crontab file to reflect your local system regarding the directory where scrape.php and usgs.db reside,
+	as well as the path to the php-cli binary.
+3 - Install the crontab (crontab crontab)
+4 - Hit /index.php in your browser to view the graph.
+
+This application is nothing fancy, and provides very little value add; it is simply a utility I used to visualize
+earthquake frequency in a given area. Use it at your own risk. There is no warranty, written or implied and I make
+no guarantees regarding this application being fit for any particular use.
+
+Shaun Landis
+<slandis@gmail.com>
