@@ -19,7 +19,7 @@ unset($database);
  */
 
 function processData($data) {
-	$database = new PDO("sqlite:quake.db") or die("Unable to access database");
+	$database = new PDO("sqlite:usgs.db") or die("Unable to access database");
 	$prep = $database->prepare("REPLACE INTO datum (source, eqid, timestamp, latitude, longitude, magnitude, depth, region) VALUES(:source,:eqid,:timestamp,:latitude,:longitude,:magnitude,:depth,:region)");
 	
 	/* First row is always headers */

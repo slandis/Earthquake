@@ -1,28 +1,28 @@
 <?
-  $db = new PDO('sqlite:usgsdata.db') or die("No PDO!");
+/*
+ * Earthquake/index.php
+ * Copyright (C) 2011, 2012 Shaun Landis
+ */
 
-  $mdata = array();
-  $ttdata = array();
-//  $ldata = array();
-//  $odata = array();
-//  $wdata = array();
+$database = new PDO('sqlite:usgs.db') or die("No PDO!");
 
-  $result = null;
-  $row = null;
-  $divs = "";
+$mdata = array();
+$ttdata = array();
+
+$result = null;
+$row = null;
+$divs = "";
   
-  $result = $db->query("SELECT * FROM datum WHERE region like '%JAPAN' ORDER BY timestamp DESC");
+$query = $db->query("SELECT * FROM datum ORDER BY timestamp DESC LIMIT 50");
+$result = $query->fetchAll(PDO::FETCH_OBJ);
 
-  foreach ($result as $row) {
-    array_push($mdata, $row['magnitude']);
-    array_push($ttdata, "'id:tooltip_".$row['id']."'");
-    $divs .= "<div id=\"tooltip_".$row['id'] . "\">Magnitude " . $row['magnitude'] . "<br />" .date('l jS \of F Y h:i:s A', $row['timestamp'])."<br />".$row['region']."<br />".$row['latitude'] . ", " . $row['longitude'] ."</div>\n";
-//    array_push($ddata, $row['dewpointf']);
-//    array_push($pdata, $row['pressurein']);
-//    array_push($wdata, $row['windchillf']);
-  }
+foreach ($result as $row) {
+    array_push($mdata, $row->magnitude);
+    array_push($ttdata, "'id:tooltip_".$row->eqid."'");
+    $divs .= "<div id=\"tooltip_".$row->eqid."\">Magnitude ".$row->magnitude."<br />".date('l jS \of F Y h:i:s A', $row->timestamp)."<br />".$row->region."<br />".$row->latitude.", ".$row->longitude."</div>\n";
+}
 
-  $db = NULL;
+$db = NULL;
 ?>
 <html>
 <head>
@@ -35,7 +35,7 @@
 <script type="text/javascript">
 window.onload = function() {
   graph = new RGraph.Line('MyGraph', [<? echo implode(',', $mdata); ?>]);
-  graph.Set('chart.title', 'Recent Earthquakes - Japan');
+  graph.Set('chart.title', '50 Most Recent Earthquakes');
   graph.Set('chart.colors', ['red', 'green', 'blue']);
   graph.Set('chart.linewidth', 1);
   graph.Set('chart.gutter', 45);
