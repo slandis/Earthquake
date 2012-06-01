@@ -1,10 +1,12 @@
 # Earthquake/README
 # Copyright (C) 2012 Shaun Landis
 
-These scripts represent a small utility to use the earthquake data feed provided by the USGS
-and parse, store and finally visualize the data via a graph. Follow the directions below, and
-modify and extend to suit your needs. If you improve upon this application and would like to
-share the modifications, email me and I'll merge the changes.
+These scripts represent a small utility to use the earthquake data feed provided by the USGS and parse, store and
+finally visualize the data via a graph displayed in HTML5. Follow the directions below, and modify and extend to
+suit your needs. If you improve upon this application and would like to share the modifications, email me and I'll
+merge the changes.
+
+RGraph is included in js/ (HTML5 graphing library). It is copyright its respective authors.
 
 SETUP
 1 - Create the SQLite (version 3) database using the provided schema.sql file (ex: cat schema.sql | sqlite3 usgs.db)
