@@ -26,9 +26,9 @@ $db = NULL;
 ?>
 <html>
 <head>
-<script src="js/RGraph.common.core.js" ></script> 
-<script src="js/RGraph.line.js" ></script>
-<script src="js/RGraph.common.tooltips.js"></script>
+<script src="packages/RGraph.common.core.js" ></script> 
+<script src="packages/RGraph.line.js" ></script>
+<script src="packages/RGraph.common.tooltips.js"></script>
 </head>
 <body>
 <canvas id="MyGraph" width="720" height="500">[Your browser does not support canvases!]</canvas>
