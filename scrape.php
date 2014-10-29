@@ -16,6 +16,11 @@ unset($database);
 /*
  * Row schema
  * source, eqid, version, timestamp, latitude, longitude, magnitude, depth, nst, region
+ *
+ * As of 10/28/14, the USGS has changed the layout of the CSV data source
+ * it now reflects the following:
+ * DateTime,Latitude,Longitude,Depth,Magnitude,MagType,NbStations,Gap,Distance,RMS,Source,EventID,Version
+ *
  */
 
 function processData($data) {
@@ -27,13 +32,13 @@ function processData($data) {
 
 	foreach ($data as $row) {
 		$p = str_getcsv($row);
-		$prep->bindParam(":source", $p[0]);
-		$prep->bindParam(":eqid", $p[1]);
-		$prep->bindParam(":timestamp", strtotime($p[3]));
-		$prep->bindParam(":latitude", $p[4]);
-		$prep->bindParam(":longitude", $p[5]);
-		$prep->bindParam(":magnitude", $p[6]);
-		$prep->bindParam(":depth", $p[7]);
+		$prep->bindParam(":source", $p[10]);
+		$prep->bindParam(":eqid", $p[11]);
+		$prep->bindParam(":timestamp", strtotime($p[0]));
+		$prep->bindParam(":latitude", $p[1]);
+		$prep->bindParam(":longitude", $p[2]);
+		$prep->bindParam(":magnitude", $p[4]);
+		$prep->bindParam(":depth", $p[3]);
 		$prep->bindParam(":region", $p[9]);
 		$prep->execute();
 	}
