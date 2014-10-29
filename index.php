@@ -1,4 +1,4 @@
-<?
+<?php
 /*
  * Earthquake/index.php
  * Copyright (C) 2011, 2012 Shaun Landis
@@ -34,7 +34,7 @@ $db = NULL;
 <canvas id="MyGraph" width="720" height="500">[Your browser does not support canvases!]</canvas>
 <script type="text/javascript">
 window.onload = function() {
-  graph = new RGraph.Line('MyGraph', [<? echo implode(',', $mdata); ?>]);
+  graph = new RGraph.Line('MyGraph', [<?php echo implode(',', $mdata); ?>]);
   graph.Set('chart.title', '50 Most Recent Earthquakes');
   graph.Set('chart.colors', ['red', 'green', 'blue']);
   graph.Set('chart.linewidth', 1);
@@ -51,14 +51,14 @@ window.onload = function() {
   graph.Set('chart.key.position.x', 5);
   graph.Set('chart.key.position.y', 5);
   graph.Set('chart.key.shadow', true);
-  graph.Set('chart.tooltips', [<? echo implode(',', $ttdata); ?>]);
+  graph.Set('chart.tooltips', [<?php echo implode(',', $ttdata); ?>]);
   graph.Set('chart.tooltips.effect', 'contract');
   graph.Draw();
 }
 
 </script>
 <div style="display:none">
-<? echo $divs; ?>
+<?php echo $divs; ?>
 </div>
 </body>
 </html>

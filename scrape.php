@@ -1,4 +1,4 @@
-<?
+<?php
 /*
  * Earthquake/scrape.php
  * Copyright (C) 2012 Shaun Landis
